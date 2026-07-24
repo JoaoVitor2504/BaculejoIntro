@@ -98,6 +98,7 @@ class BACULEJO_OT_CreateIntro(bpy.types.Operator):
 
         if camera:
             camera.create_camera()
+            camera.animate_camera()
 
         if particles:
             particles.create_particles(
