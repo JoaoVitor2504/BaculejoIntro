@@ -36,13 +36,21 @@ def create_single_text(name, body, size, location):
 
 def convert_to_mesh(obj):
 
+    name = obj.name
+
     bpy.context.view_layer.objects.active = obj
 
     obj.select_set(True)
 
     bpy.ops.object.convert(target='MESH')
 
-    obj.select_set(False)
+    new_obj = bpy.context.active_object
+
+    new_obj.name = name
+
+    new_obj.select_set(False)
+
+    return new_obj
 
 
 def create_text(nickname, subtitle):
@@ -63,7 +71,7 @@ def create_text(nickname, subtitle):
         (0, 0, -0.10)
     )
 
-    convert_to_mesh(subtitle_obj)
-    convert_to_mesh(nickname_obj)
+    subtitle_obj = convert_to_mesh(subtitle_obj)
+    nickname_obj = convert_to_mesh(nickname_obj)
 
     return subtitle_obj, nickname_obj
