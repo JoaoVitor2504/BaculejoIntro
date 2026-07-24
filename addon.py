@@ -89,11 +89,10 @@ class BACULEJO_OT_CreateIntro(bpy.types.Operator):
         self.report({'INFO'}, "Creating Intro...")
 
         if text:
-            text.create_text(
-                props.nickname,
+          subtitle_obj, nickname_obj = text.create_text(
+            props.nickname,
                 props.subtitle
             )
-
         if materials:
             materials.create_materials()
 
